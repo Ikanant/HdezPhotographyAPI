@@ -2,8 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CourseLibrary.API.Entities
-{
+namespace HdezPhotography.Api.Entities {
     public class Course
     {
         [Key]       

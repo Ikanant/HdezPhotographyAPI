@@ -1,11 +1,10 @@
-﻿using CourseLibrary.API.DbContexts;
-using CourseLibrary.API.Entities; 
+﻿using HdezPhotography.Api.DbContexts;
+using HdezPhotography.Api.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CourseLibrary.API.Services
-{
+namespace HdezPhotography.Api.Services {
     public class CourseLibraryRepository : ICourseLibraryRepository, IDisposable
     {
         private readonly CourseLibraryContext _context;

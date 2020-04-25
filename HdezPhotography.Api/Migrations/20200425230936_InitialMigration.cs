@@ -1,31 +1,38 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace HdezPhotography.Api.Migrations {
-    public partial class InitialMigration : Migration {
-        protected override void Up(MigrationBuilder migrationBuilder) {
+namespace HdezPhotography.Api.Migrations
+{
+    public partial class InitialMigration : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
             migrationBuilder.CreateTable(
                 name: "Authors",
-                columns: table => new {
+                columns: table => new
+                {
                     Id = table.Column<Guid>(nullable: false),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     DateOfBirth = table.Column<DateTimeOffset>(nullable: false),
                     MainCategory = table.Column<string>(maxLength: 50, nullable: false)
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_Authors", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Courses",
-                columns: table => new {
+                columns: table => new
+                {
                     Id = table.Column<Guid>(nullable: false),
                     Title = table.Column<string>(maxLength: 100, nullable: false),
                     Description = table.Column<string>(maxLength: 1500, nullable: true),
                     AuthorId = table.Column<Guid>(nullable: false)
                 },
-                constraints: table => {
+                constraints: table =>
+                {
                     table.PrimaryKey("PK_Courses", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Courses_Authors_AuthorId",
@@ -66,7 +73,8 @@ namespace HdezPhotography.Api.Migrations {
                 column: "AuthorId");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder) {
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
             migrationBuilder.DropTable(
                 name: "Courses");
 

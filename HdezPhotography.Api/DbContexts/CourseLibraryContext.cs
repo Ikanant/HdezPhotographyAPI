@@ -1,9 +1,8 @@
-﻿using CourseLibrary.API.Entities;
+﻿using HdezPhotography.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace CourseLibrary.API.DbContexts
-{
+namespace HdezPhotography.Api.DbContexts {
     public class CourseLibraryContext : DbContext
     {
         public CourseLibraryContext(DbContextOptions<CourseLibraryContext> options)

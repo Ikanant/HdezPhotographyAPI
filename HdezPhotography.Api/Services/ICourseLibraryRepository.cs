@@ -1,9 +1,8 @@
-﻿using CourseLibrary.API.Entities;
+﻿using HdezPhotography.Api.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace CourseLibrary.API.Services
-{
+namespace HdezPhotography.Api.Services {
     public interface ICourseLibraryRepository
     {    
         IEnumerable<Course> GetCourses(Guid authorId);
