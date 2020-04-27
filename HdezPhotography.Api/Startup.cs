@@ -25,11 +25,11 @@ namespace HdezPhotography.Api {
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
+            // services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 
-            services.AddDbContext<CourseLibraryContext>(options => {
+            services.AddDbContext<PhotographyApiContext>(options => {
                 options.UseSqlServer(
-                    @"Server=(localdb)\mssqllocaldb;Database=CourseLibraryDB;Trusted_Connection=True;");
+                    @"Server=(localdb)\mssqllocaldb;Database=PhotographyApiDB;Trusted_Connection=True;");
             });
         }
 
