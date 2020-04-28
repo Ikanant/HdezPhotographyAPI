@@ -75,8 +75,8 @@ namespace HdezPhotography.Api.Migrations
                 columns: new[] { "ID", "AlbumID", "Description", "ImagePath", "MemberID", "Title", "UploadDate", "View" },
                 values: new object[,]
                 {
-                    { 1, 1, "Cool Description", "CLOUDINARY PATH", 1, "Sample", new DateTime(2020, 4, 26, 0, 0, 0, 0, DateTimeKind.Local), 0 },
-                    { 2, 1, "Cool Description2", "CLOUDINARY PATH2", 1, "Sample2", new DateTime(2020, 4, 26, 0, 0, 0, 0, DateTimeKind.Local), 0 }
+                    { 1, 1, "Cool Description", "CLOUDINARY PATH", 1, "Sample", new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local), 0 },
+                    { 2, 1, "Cool Description2", "CLOUDINARY PATH2", 1, "Sample2", new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local), 0 }
                 });
 
             migrationBuilder.CreateIndex(

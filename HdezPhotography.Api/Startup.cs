@@ -3,6 +3,7 @@ using HdezPhotography.Api.DbContexts;
 using HdezPhotography.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,7 +26,7 @@ namespace HdezPhotography.Api {
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            // services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
+             services.AddScoped<IPhotoLibraryRepository, PhotoLibraryRepository>();
 
             services.AddDbContext<PhotographyApiContext>(options => {
                 options.UseSqlServer(
@@ -38,8 +39,16 @@ namespace HdezPhotography.Api {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
+            else {
+                app.UseExceptionHandler(appBuilder => {
+                    appBuilder.Run(async context => {
+                        context.Response.StatusCode = 500;
+                        await context.Response.WriteAsync("Custom error msg: Something went wrong on the server. Sorry");
+                    });
+                });
+            }
 
-            app.UseRouting();
+            app.UseRouting(); 
 
             app.UseAuthorization();
 

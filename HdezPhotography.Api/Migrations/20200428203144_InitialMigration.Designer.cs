@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HdezPhotography.Api.Migrations
 {
     [DbContext(typeof(PhotographyApiContext))]
-    [Migration("20200427022458_InitialMigration")]
+    [Migration("20200428203144_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -110,7 +110,7 @@ namespace HdezPhotography.Api.Migrations
                             ImagePath = "CLOUDINARY PATH",
                             MemberID = 1,
                             Title = "Sample",
-                            UploadDate = new DateTime(2020, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            UploadDate = new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local),
                             View = 0
                         },
                         new
@@ -121,7 +121,7 @@ namespace HdezPhotography.Api.Migrations
                             ImagePath = "CLOUDINARY PATH2",
                             MemberID = 1,
                             Title = "Sample2",
-                            UploadDate = new DateTime(2020, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            UploadDate = new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local),
                             View = 0
                         });
                 });

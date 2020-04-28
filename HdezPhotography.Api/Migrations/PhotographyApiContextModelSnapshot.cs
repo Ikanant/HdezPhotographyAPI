@@ -108,7 +108,7 @@ namespace HdezPhotography.Api.Migrations
                             ImagePath = "CLOUDINARY PATH",
                             MemberID = 1,
                             Title = "Sample",
-                            UploadDate = new DateTime(2020, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            UploadDate = new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local),
                             View = 0
                         },
                         new
@@ -119,7 +119,7 @@ namespace HdezPhotography.Api.Migrations
                             ImagePath = "CLOUDINARY PATH2",
                             MemberID = 1,
                             Title = "Sample2",
-                            UploadDate = new DateTime(2020, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            UploadDate = new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local),
                             View = 0
                         });
                 });
