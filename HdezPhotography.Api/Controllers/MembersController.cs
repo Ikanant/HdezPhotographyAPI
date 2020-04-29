@@ -6,6 +6,7 @@ using HdezPhotography.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HdezPhotography.Api.Controllers {
 
@@ -41,7 +42,7 @@ namespace HdezPhotography.Api.Controllers {
         }
 
         [HttpPost]
-        public ActionResult<PhotoDto> CreateMember(MemberImportDto newMember) {
+        public ActionResult<MemberDto> CreateMember(MemberImportDto newMember) {
             if (newMember == null) {
                 return BadRequest(); // <--- Not necessary
             }
@@ -54,6 +55,51 @@ namespace HdezPhotography.Api.Controllers {
             var memberToReturn = _mapper.Map<MemberDto>(memberEntity);
 
             return CreatedAtRoute("GetMember", new { memberID = memberEntity.ID }, memberToReturn);
+        }
+
+        [HttpGet("({ids})", Name = "GetMemberCollection")]
+        public ActionResult<MemberDto> GetMemberCollection(
+            [FromRoute]
+            [ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<int> ids) {
+
+            if (ids == null) {
+                return BadRequest();
+            }
+            var memberEntities = _photoLibraryRepository.GetMembers(ids);
+
+            // Extra check top see if the count of IDs matches the Count of Entities... if they are different , something is wrong
+            if (ids.Count() != memberEntities.Count()) {
+                return NotFound();
+            }
+
+            var membersToReturn = _mapper.Map<IEnumerable<MemberDto>>(memberEntities);
+            
+            return Ok(membersToReturn);
+        }
+
+        [HttpPost("CreateMemberCollection")]
+        public ActionResult<MemberDto> CreateMemberCollection(IEnumerable<MemberImportDto> newMembers) {
+            if (newMembers == null) {
+                return BadRequest(); // <--- Not necessary
+            }
+            var memberEntities = _mapper.Map<IEnumerable<Member>>(newMembers);
+
+            foreach (var entitty in memberEntities) {
+                _photoLibraryRepository.AddMember(entitty);
+            }
+            _photoLibraryRepository.Save();
+
+            // Get the newly created entities
+            var newMemberEntities = _mapper.Map<IEnumerable<MemberDto>>(memberEntities);
+
+            // The new IDs of all the new entities... this is they key
+            var idsAsString = string.Join(",", newMemberEntities.Select(s => s.ID));
+
+            return CreatedAtRoute(
+                "GetMemberCollection",
+                new { ids = idsAsString },
+                newMemberEntities
+            );
         }
     }
 }

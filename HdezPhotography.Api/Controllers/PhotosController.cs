@@ -70,5 +70,11 @@ namespace HdezPhotography.Api.Controllers {
             photoToReturn
             );
         }
+
+        [HttpOptions]
+        public IActionResult GetMembersOptions() {
+            Response.Headers.Add("Allow", "GET, POST, OPTIONS");
+            return Ok();
+        }
     }
 }

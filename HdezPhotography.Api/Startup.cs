@@ -30,7 +30,7 @@ namespace HdezPhotography.Api {
 
             services.AddDbContext<PhotographyApiContext>(options => {
                 options.UseSqlServer(
-                    @"Server=(localdb)\mssqllocaldb;Database=PhotographyApiDB;Trusted_Connection=True;");
+                    @"Server=127.0.0.1,1433;Database=PhotographyApiDB;User=SA;Password=HelloWorld10;");
             });
         }
 
