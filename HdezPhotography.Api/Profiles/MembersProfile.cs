@@ -6,6 +6,8 @@ namespace HdezPhotography.Api.Profiles {
     public class MembersProfile : Profile {
         public MembersProfile() {
             CreateMap<Member, MemberDto>();
+
+            CreateMap<MemberImportDto, Member>();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HdezPhotography.Api.Entities;
 using HdezPhotography.Api.Helpers;
 using HdezPhotography.Api.Models;
 using HdezPhotography.Api.ResourceParameters;
@@ -31,7 +32,7 @@ namespace HdezPhotography.Api.Controllers {
             return Ok(_mapper.Map<IEnumerable<PhotoDto>>(photosFromRepo));
         }
 
-        [HttpGet("{photoID:int}")]
+        [HttpGet("{photoID:int}", Name="GetPhotoForMember")]
         public ActionResult<PhotoDto> GetPhotoForMember(int memberID, int photoID) {
             if (!_photoLibraryRepository.MemberExists(memberID)) {
                 return NotFound();
@@ -44,6 +45,30 @@ namespace HdezPhotography.Api.Controllers {
             }
 
             return Ok(_mapper.Map<PhotoDto>(photoFromRepo));
+        }
+
+        [HttpPost]
+        public ActionResult<PhotoDto> CreatePhotoForMember(int memberID, PhotoImportDto newPhoto) {
+            // In old DotNet we would have had to check if new object was valid to be serialized into a Photo object. We no longer need to include that...
+            // APIController attribute is taking care of this
+            if (newPhoto == null) {
+                return BadRequest(); // <--- Not necessary
+            }
+
+            var photoEntity = _mapper.Map<Photo>(newPhoto);
+            _photoLibraryRepository.AddPhoto(memberID, photoEntity);
+            _photoLibraryRepository.Save();
+
+            // Map the photo entity (with now an ID filled up) to a PhotoDto
+            // We RETURN the new PhotoDTO after action has been completed
+            var photoToReturn = _mapper.Map<PhotoDto>(photoEntity);
+
+            return CreatedAtRoute("GetPhotoForMember", new {
+                memberID = memberID,
+                photoID = photoEntity.ID
+            },
+            photoToReturn
+            );
         }
     }
 }

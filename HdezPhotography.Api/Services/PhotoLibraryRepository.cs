@@ -23,6 +23,7 @@ namespace HdezPhotography.Api.Services {
             }
             // always set the MemberID to the passed-in memberID
             photo.MemberID = memberID;
+            photo.UploadDate = DateTime.Now;
             _context.Photos.Add(photo);
         }
 

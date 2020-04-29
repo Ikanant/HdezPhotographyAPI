@@ -10,4 +10,12 @@ namespace HdezPhotography.Api.Models {
         public string PhoneNum { get; set; }
         public string Email { get; set; }
     }
+
+    public class MemberImportDto {
+        public string Name { get; set; }
+        public string PhoneNum { get; set; }
+        public string Email { get; set; }
+        public ICollection<PhotoImportDto> Photos { get; set; }
+            = new List<PhotoImportDto>();
+    }
 }

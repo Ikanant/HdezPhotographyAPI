@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HdezPhotography.Api.Entities;
 using HdezPhotography.Api.Helpers;
 using HdezPhotography.Api.Models;
 using HdezPhotography.Api.Services;
@@ -28,7 +29,7 @@ namespace HdezPhotography.Api.Controllers {
             return Ok(_mapper.Map<IEnumerable<MemberDto>>(membersFromRepo));
         }
 
-        [HttpGet("{memberId:int}")]
+        [HttpGet("{memberId:int}", Name = "GetMember")]
         public IActionResult GetMember(int memberId) {
             var memberFromRepo = _photoLibraryRepository.GetMember(memberId);
 
@@ -37,6 +38,22 @@ namespace HdezPhotography.Api.Controllers {
             }
 
             return Ok(_mapper.Map<MemberDto>(memberFromRepo));
+        }
+
+        [HttpPost]
+        public ActionResult<PhotoDto> CreateMember(MemberImportDto newMember) {
+            if (newMember == null) {
+                return BadRequest(); // <--- Not necessary
+            }
+            var memberEntity = _mapper.Map<Member>(newMember);
+            _photoLibraryRepository.AddMember(memberEntity);
+            _photoLibraryRepository.Save();
+
+            // Map the member entity (with now an ID filled up) to a MemberDto
+            // We RETURN the new MemberDTO after action has been completed
+            var memberToReturn = _mapper.Map<MemberDto>(memberEntity);
+
+            return CreatedAtRoute("GetMember", new { memberID = memberEntity.ID }, memberToReturn);
         }
     }
 }

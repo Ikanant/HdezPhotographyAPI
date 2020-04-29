@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HdezPhotography.Api.Entities {
@@ -18,5 +19,8 @@ namespace HdezPhotography.Api.Entities {
         [Required]
         [MaxLength(200)]
         public string Email { get; set; }
+
+        public ICollection<Photo> Photos { get; set; }
+                    = new List<Photo>();
     }
 }
