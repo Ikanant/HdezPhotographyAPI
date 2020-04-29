@@ -24,7 +24,7 @@ namespace HdezPhotography.Api.Entities {
         
         public DateTime UploadDate { get; set; }
         
-        public int View { get; set; }
+        public int Views { get; set; }
         
         [Required]
         [MaxLength(200)]

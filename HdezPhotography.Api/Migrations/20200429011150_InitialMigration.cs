@@ -33,7 +33,7 @@ namespace HdezPhotography.Api.Migrations
                     Title = table.Column<string>(maxLength: 200, nullable: false),
                     Description = table.Column<string>(maxLength: 1000, nullable: true),
                     UploadDate = table.Column<DateTime>(nullable: false),
-                    View = table.Column<int>(nullable: false),
+                    Views = table.Column<int>(nullable: false),
                     ImagePath = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
@@ -72,11 +72,11 @@ namespace HdezPhotography.Api.Migrations
 
             migrationBuilder.InsertData(
                 table: "Photos",
-                columns: new[] { "ID", "AlbumID", "Description", "ImagePath", "MemberID", "Title", "UploadDate", "View" },
+                columns: new[] { "ID", "AlbumID", "Description", "ImagePath", "MemberID", "Title", "UploadDate", "Views" },
                 values: new object[,]
                 {
-                    { 1, 1, "Cool Description", "CLOUDINARY PATH", 1, "Sample", new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local), 0 },
-                    { 2, 1, "Cool Description2", "CLOUDINARY PATH2", 1, "Sample2", new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local), 0 }
+                    { 1, 1, "Cool Description", "CLOUDINARY PATH", 1, "Sample", new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local), 123 },
+                    { 2, 1, "Cool Description2", "CLOUDINARY PATH2", 1, "Sample2", new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local), 12412 }
                 });
 
             migrationBuilder.CreateIndex(

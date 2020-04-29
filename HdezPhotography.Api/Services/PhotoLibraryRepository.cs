@@ -1,5 +1,6 @@
 ﻿using HdezPhotography.Api.DbContexts;
 using HdezPhotography.Api.Entities;
+using HdezPhotography.Api.ResourceParameters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,27 @@ namespace HdezPhotography.Api.Services {
             return _context.Photos
                         .Where(c => c.MemberID == memberID)
                         .OrderBy(c => c.Title).ToList();
+        }
+
+        public IEnumerable<Photo> GetPhotos(int memberID, PhotosResourceParameters photosResourceParameters) {
+            if (photosResourceParameters == null) {
+                throw new ArgumentNullException(nameof(photosResourceParameters));
+            }
+            // Dealing with IQueryable allows us to pile where clause sections without loading the data.
+            // Pulling the data and filtering it is insanely nonperformant
+            var collection = _context.Photos as IQueryable<Photo>;
+             
+            if (photosResourceParameters.ViewCount > 0) {
+                collection = collection.Where(c => c.MemberID == memberID && c.Views >= photosResourceParameters.ViewCount);
+            }
+
+            if (!string.IsNullOrWhiteSpace(photosResourceParameters.SearchQuery)) {
+                var searchQuery = photosResourceParameters.SearchQuery.Trim();
+
+                collection = collection.Where(w => w.Description.Contains(searchQuery));
+            }
+
+            return collection.ToList();
         }
 
         public void UpdatePhoto(Photo photo) {

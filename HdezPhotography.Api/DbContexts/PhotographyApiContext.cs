@@ -36,7 +36,7 @@ namespace HdezPhotography.Api.DbContexts {
                     Title = "Sample",
                     Description = "Cool Description",
                     UploadDate = DateTime.Today,
-                    View = 0,
+                    Views = 123,
                     ImagePath = "CLOUDINARY PATH"
                 },
                new Photo {
@@ -46,7 +46,7 @@ namespace HdezPhotography.Api.DbContexts {
                    Title = "Sample2",
                    Description = "Cool Description2",
                    UploadDate = DateTime.Today,
-                   View = 0,
+                   Views = 12412,
                    ImagePath = "CLOUDINARY PATH2"
                }
             );

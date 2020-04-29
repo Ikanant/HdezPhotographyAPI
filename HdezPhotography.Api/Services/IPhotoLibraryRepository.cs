@@ -1,10 +1,11 @@
 ﻿using HdezPhotography.Api.Entities;
-using System;
+using HdezPhotography.Api.ResourceParameters;
 using System.Collections.Generic;
 
 namespace HdezPhotography.Api.Services {
     public interface IPhotoLibraryRepository {
         IEnumerable<Photo> GetPhotos(int memberId);
+        IEnumerable<Photo> GetPhotos(int memberID, PhotosResourceParameters resourceParameters);
         Photo GetPhoto(int memberId, int photoId);
         void AddPhoto(int memberId, Photo photo);
         void UpdatePhoto(Photo photo);

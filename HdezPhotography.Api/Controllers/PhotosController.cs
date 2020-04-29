@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HdezPhotography.Api.Helpers;
 using HdezPhotography.Api.Models;
+using HdezPhotography.Api.ResourceParameters;
 using HdezPhotography.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,12 +22,12 @@ namespace HdezPhotography.Api.Controllers {
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<PhotoDto>> GetPhotosForMember(int memberID) {
+        public ActionResult<IEnumerable<PhotoDto>> GetPhotosForMember(int memberID, [FromQuery] PhotosResourceParameters photosResourceParameters) {
             if (!_photoLibraryRepository.MemberExists(memberID)) {
                 return NotFound();
             }
 
-            var photosFromRepo = _photoLibraryRepository.GetPhotos(memberID);
+            var photosFromRepo = _photoLibraryRepository.GetPhotos(memberID, photosResourceParameters);
             return Ok(_mapper.Map<IEnumerable<PhotoDto>>(photosFromRepo));
         }
 

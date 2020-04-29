@@ -92,7 +92,7 @@ namespace HdezPhotography.Api.Migrations
                     b.Property<DateTime>("UploadDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("View")
+                    b.Property<int>("Views")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -109,7 +109,7 @@ namespace HdezPhotography.Api.Migrations
                             MemberID = 1,
                             Title = "Sample",
                             UploadDate = new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local),
-                            View = 0
+                            Views = 123
                         },
                         new
                         {
@@ -120,7 +120,7 @@ namespace HdezPhotography.Api.Migrations
                             MemberID = 1,
                             Title = "Sample2",
                             UploadDate = new DateTime(2020, 4, 28, 0, 0, 0, 0, DateTimeKind.Local),
-                            View = 0
+                            Views = 12412
                         });
                 });
 
