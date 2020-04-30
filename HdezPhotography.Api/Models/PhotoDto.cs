@@ -17,4 +17,11 @@ namespace HdezPhotography.Api.Models {
         public string Description { get; set; }
         public string ImagePath { get; set; }
     }
+
+    public class PhotoUpdateDto {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public int Views { get; set; }
+        public string ImagePath { get; set; }
+    }
 }

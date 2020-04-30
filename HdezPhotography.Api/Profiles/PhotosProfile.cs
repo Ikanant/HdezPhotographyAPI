@@ -8,6 +8,8 @@ namespace HdezPhotography.Api.Profiles {
             CreateMap<Photo, PhotoDto>();
 
             CreateMap<PhotoImportDto, Photo>();
+
+            CreateMap<PhotoUpdateDto, Photo>();
         }
     }
 }

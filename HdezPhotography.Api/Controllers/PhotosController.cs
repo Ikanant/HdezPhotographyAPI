@@ -22,6 +22,12 @@ namespace HdezPhotography.Api.Controllers {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+        [HttpOptions]
+        public IActionResult GetMembersOptions() {
+            Response.Headers.Add("Allow", "GET, POST, OPTIONS");
+            return Ok();
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<PhotoDto>> GetPhotosForMember(int memberID, [FromQuery] PhotosResourceParameters photosResourceParameters) {
             if (!_photoLibraryRepository.MemberExists(memberID)) {
@@ -71,10 +77,28 @@ namespace HdezPhotography.Api.Controllers {
             );
         }
 
-        [HttpOptions]
-        public IActionResult GetMembersOptions() {
-            Response.Headers.Add("Allow", "GET, POST, OPTIONS");
-            return Ok();
+        [HttpPut("{courseID}")]
+        public ActionResult UpdatePhotoForMember(int memberID, int photoID, PhotoUpdateDto photoToUpdate) {
+            if (!_photoLibraryRepository.MemberExists(memberID)) {
+                return NotFound();
+            }
+
+            var photoForMemberFromRepo = _photoLibraryRepository.GetPhoto(memberID, photoID);
+
+            if (photoForMemberFromRepo == null) {
+                return NotFound();
+            }
+
+            // Order of events:
+            // Map the entity to a photoUpdateDto
+            // Apply changes to the Dto
+            // Map the Dto back to an entity.... Automapper will take care of this for us...
+            _mapper.Map(photoToUpdate, photoForMemberFromRepo);
+
+            // From this moment on the entity already contains the updated fields!
+            _photoLibraryRepository.UpdatePhoto(photoForMemberFromRepo);
+
+            return NoContent();
         }
     }
 }
