@@ -11,6 +11,9 @@ namespace HdezPhotography.Api.Entities {
 
         [Required]
         public int AlbumID { get; set; }
+        
+        [ForeignKey("MemberID")]
+        public Member Member { get; set; }
 
         [Required]
         public int MemberID { get; set; }

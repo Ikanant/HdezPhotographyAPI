@@ -101,5 +101,19 @@ namespace HdezPhotography.Api.Controllers {
                 newMemberEntities
             );
         }
+
+        [HttpDelete("{memberID}")]
+        public ActionResult DeletePhotoForMember(int memberID) {
+            var memberFromRepo = _photoLibraryRepository.GetMember(memberID);
+
+            if (memberFromRepo == null) {
+                return NotFound();
+            }
+
+            _photoLibraryRepository.DeleteMember(memberFromRepo);
+            _photoLibraryRepository.Save();
+
+            return NoContent();
+        }
     }
 }

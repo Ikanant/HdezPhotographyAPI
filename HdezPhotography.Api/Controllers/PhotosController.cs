@@ -4,6 +4,7 @@ using HdezPhotography.Api.Helpers;
 using HdezPhotography.Api.Models;
 using HdezPhotography.Api.ResourceParameters;
 using HdezPhotography.Api.Services;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -38,21 +39,6 @@ namespace HdezPhotography.Api.Controllers {
             return Ok(_mapper.Map<IEnumerable<PhotoDto>>(photosFromRepo));
         }
 
-        [HttpGet("{photoID:int}", Name="GetPhotoForMember")]
-        public ActionResult<PhotoDto> GetPhotoForMember(int memberID, int photoID) {
-            if (!_photoLibraryRepository.MemberExists(memberID)) {
-                return NotFound();
-            }
-
-            var photoFromRepo = _photoLibraryRepository.GetPhoto(memberID, photoID);
-            
-            if (photoFromRepo == null) {
-                return NotFound();
-            }
-
-            return Ok(_mapper.Map<PhotoDto>(photoFromRepo));
-        }
-
         [HttpPost]
         public ActionResult<PhotoDto> CreatePhotoForMember(int memberID, PhotoImportDto newPhoto) {
             // In old DotNet we would have had to check if new object was valid to be serialized into a Photo object. We no longer need to include that...
@@ -77,8 +63,23 @@ namespace HdezPhotography.Api.Controllers {
             );
         }
 
+        [HttpGet("{photoID:int}", Name="GetPhotoForMember")]
+        public ActionResult<PhotoDto> GetPhotoForMember(int memberID, int photoID) {
+            if (!_photoLibraryRepository.MemberExists(memberID)) {
+                return NotFound();
+            }
+
+            var photoFromRepo = _photoLibraryRepository.GetPhoto(memberID, photoID);
+            
+            if (photoFromRepo == null) {
+                return NotFound();
+            }
+
+            return Ok(_mapper.Map<PhotoDto>(photoFromRepo));
+        }
+
         [HttpPut("{courseID}")]
-        public ActionResult UpdatePhotoForMember(int memberID, int photoID, PhotoUpdateDto photoToUpdate) {
+        public IActionResult UpdatePhotoForMember(int memberID, int photoID, PhotoUpdateDto photoToUpdate) {
             if (!_photoLibraryRepository.MemberExists(memberID)) {
                 return NotFound();
             }
@@ -86,7 +87,16 @@ namespace HdezPhotography.Api.Controllers {
             var photoForMemberFromRepo = _photoLibraryRepository.GetPhoto(memberID, photoID);
 
             if (photoForMemberFromRepo == null) {
-                return NotFound();
+                var photoToAdd = _mapper.Map<Photo>(photoToUpdate);
+                photoToAdd.ID = photoID;
+
+                _photoLibraryRepository.AddPhoto(memberID, photoToAdd);
+
+                _photoLibraryRepository.Save();
+
+                var photoToReturn = _mapper.Map<PhotoDto>(photoToAdd);
+
+                return CreatedAtRoute("GetPhotoForMember", new { memberID = memberID, photoID = photoToReturn.ID }, photoToReturn);
             }
 
             // Order of events:
@@ -97,6 +107,66 @@ namespace HdezPhotography.Api.Controllers {
 
             // From this moment on the entity already contains the updated fields!
             _photoLibraryRepository.UpdatePhoto(photoForMemberFromRepo);
+
+            return NoContent();
+        }
+
+        [HttpPatch("{photoID}")]
+        public ActionResult PartiallyUpdatePhotoForMember(int memberID, int photoID, JsonPatchDocument<PhotoUpdateDto> patchDocument) {
+            if (!_photoLibraryRepository.MemberExists(memberID)) {
+                return NotFound();
+            }
+
+            var photoForMemberFromRepo = _photoLibraryRepository.GetPhoto(memberID, photoID);
+
+            if (photoForMemberFromRepo == null) {
+                var newPhotoToInsert = new PhotoUpdateDto();
+                patchDocument.ApplyTo(newPhotoToInsert, ModelState);
+
+                var photoToAdd = _mapper.Map<Photo>(newPhotoToInsert);
+                // photoToAdd.ID = photoID; <<< don't need this. ID is an identity column
+
+                if (!TryValidateModel(photoToAdd)) {
+                    return ValidationProblem(ModelState);
+                }
+
+                _photoLibraryRepository.AddPhoto(memberID, photoToAdd);
+                _photoLibraryRepository.Save();
+
+                return CreatedAtRoute("GetPhotoForMember", new { memberID = memberID, photoID = photoToAdd.ID }, photoForMemberFromRepo);
+            }
+
+            var photoToPatch = _mapper.Map<PhotoUpdateDto>(photoForMemberFromRepo);
+
+            patchDocument.ApplyTo(photoToPatch, ModelState);
+
+            if (!TryValidateModel(photoToPatch)) {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(photoToPatch, photoForMemberFromRepo);
+
+            _photoLibraryRepository.UpdatePhoto(photoForMemberFromRepo);
+
+            _photoLibraryRepository.Save();
+
+            return NoContent();
+        }
+
+        [HttpDelete("{photoID}")]
+        public ActionResult DeletePhotoForMember(int memberID, int photoID) {
+            if (!_photoLibraryRepository.MemberExists(memberID)) {
+                return NotFound();
+            }
+
+            var photoForMemberFromRepo = _photoLibraryRepository.GetPhoto(memberID, photoID);
+
+            if (photoForMemberFromRepo == null) {
+                return NotFound();
+            }
+
+            _photoLibraryRepository.DeletePhoto(photoForMemberFromRepo);
+            _photoLibraryRepository.Save();
 
             return NoContent();
         }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 using System;
 
 namespace HdezPhotography.Api {
@@ -22,7 +23,10 @@ namespace HdezPhotography.Api {
         public void ConfigureServices(IServiceCollection services) {
             services.AddControllers(setupAction => {
                 setupAction.ReturnHttpNotAcceptable = true; // <<< This will return a 406 NOT ACCEPTABLE if requested format is not allowed
-            }).AddXmlDataContractSerializerFormatters(); // <<< Will now make XML a supported response message back to the client
+            })
+                .AddNewtonsoftJson(setupAction => setupAction.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver()) // Allow us to use JSON.Net in my app. Only quick change is the contract resolver so properties are always camel cased
+                .AddXmlDataContractSerializerFormatters(); // <<< Will now make XML a supported response message back to the client
+                
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
