@@ -1,0 +1,1466 @@
+{
+	"info": {
+		"_postman_id": "3bd3b2f0-95f5-4f5d-ab94-22547c8c87ce",
+		"name": "REST course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Members",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51001/api/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Member",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.marvin.hateoas+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:51001/api/members/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Member (unexisting)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51001/api/authors/a8d15573-ec65-4f48-97d2-2e7c0a726c33",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"a8d15573-ec65-4f48-97d2-2e7c0a726c33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Member  (Accept: application/json)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:51001/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Member  (Accept: application/xml)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:51001/api/members/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Photos for Member",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Photos for Member (unexisting Member)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51001/api/members/12341/photos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"12341",
+						"photos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Photo for Member",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51001/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"5b1c2b4d-48c7-402a-80c3-cc796ad49c6b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Photo for Member (unexisting Member)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51001/api/authors/b29e03b5-ba28-4489-8834-689de28af370/courses/bc4c35c3-3857-4250-9449-155fcf5109ec",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"b29e03b5-ba28-4489-8834-689de28af370",
+						"courses",
+						"bc4c35c3-3857-4250-9449-155fcf5109ec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Photo for Member (unexisting Photo)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos/112312",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos",
+						"112312"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HEAD Members",
+			"request": {
+				"method": "HEAD",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51001/api/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Filtered Photos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51001/api/authors?mainCategory=Rum",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors"
+					],
+					"query": [
+						{
+							"key": "mainCategory",
+							"value": "Rum"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Searched Photos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51001/api/authors?searchQuery=a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors"
+					],
+					"query": [
+						{
+							"key": "searchQuery",
+							"value": "a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Filtered and Searched Photos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:51001/api/authors?mainCategory=Rum&searchQuery=a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors"
+					],
+					"query": [
+						{
+							"key": "mainCategory",
+							"value": "Rum"
+						},
+						{
+							"key": "searchQuery",
+							"value": "a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Member",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\" : \"Top Pirate Hits of Last Decade\",\n\t\"description\" : \"Learn the lyrics and notes to the latest pirate hits\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/2902b665-1190-4c70-9915-b9c2d7680450/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"2902b665-1190-4c70-9915-b9c2d7680450",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Photo for Member",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"AlbumID\" : 12,\n\t\"Title\" : \"Cool Post\",\n\t\"Description\" : \"Coolest description\",\n\t\"ImagePath\": \"C Drive\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Member (no body)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Member (invalid body)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"AlbumID\" : 12,\n\t\"Title\" : \"Cool Post\",\n\t\"Description\" : \"Coolest description\",\n\t\"ImagePath\": \"C Drive\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Photo for Member (unexisting Member )",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"AlbumID\" : 12,\n\t\"Title\" : \"Cool Post\",\n\t\"Description\" : \"Coolest description\",\n\t\"ImagePath\": \"C Drive\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/42/photos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"42",
+						"photos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Member with Photos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Name\" : \"Ashley\",\n\t\"PhoneNum\" : \"21234123\",\n\t\"Email\": \"ashley@gmail.com\",\n\t\"Photos\": [\n\t\t{\n\t\t\t\"AlbumID\" : 13,\n\t\t\t\"Title\" : \"Cool Post 1\",\n\t\t\t\"Description\" : \"Coolest description\",\n\t\t\t\"ImagePath\": \"C Drive\"\n\t\t},\n\t\t{\n\t\t\t\"AlbumID\" : 412,\n\t\t\t\"Title\" : \"Cool Post 2\",\n\t\t\t\"Description\" : \"Coolest description\",\n\t\t\t\"ImagePath\": \"C Drive\"\n\t\t},\n\t\t{\n\t\t\t\"AlbumID\" : 31,\n\t\t\t\"Title\" : \"Cool Post 3\",\n\t\t\t\"Description\" : \"Coolest description\",\n\t\t\t\"ImagePath\": \"C Drive\"\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Member collection",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"Name\" : \"Ashley\",\n\t\"PhoneNum\" : \"21234123\",\n\t\"Email\": \"ashley@gmail.com\"\n},\n{\n\t\"Name\" : \"John\",\n\t\"PhoneNum\" : \"21234123\",\n\t\"Email\": \"ashley@gmail.com\"\n}]"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/CreateMemberCollection",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"CreateMemberCollection"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Member to single resource URI",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Name\" : \"Ashley\",\n\t\"PhoneNum\" : \"21234123\",\n\t\"Email\": \"ashley@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OPTIONS Members",
+			"request": {
+				"method": "OPTIONS",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Photo for Member (null values)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"AlbumID\" : null,\n\t\"Title\" : null,\n\t\"Description\" : null,\n\t\"ImagePath\": null\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Course for Author (title == description)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\" : \"A new course\",\n  \"description\" : \"A new course\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/2902b665-1190-4c70-9915-b9c2d7680450/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"2902b665-1190-4c70-9915-b9c2d7680450",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Course for Author (long title == long description)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Ye black spot cog Spanish Main black jack gabion smartly bilge water list. Execution dock yawl clap of thunder yo-ho-ho case shot poop deck loot hail-shot overhaul. Quarter no prey, no pay bowsprit piracy bucko driver crimp mizzenmast fire in the hole. Stern swing the lead smartly hogshead port jack bilge parley lugger.  Nipper brig tackle Brethren of the Coast crimp rigging lanyard cutlass fluke. Blow the man down lass rutters Sea Legs warp gun splice the main brace ho black spot. Long clothes main sheet Davy Jones' Locker yawl ballast dead men tell no tales run a rig gally bucko. Heave down piracy topgallant snow stern chantey barkadeer weigh anchor mizzenmast.Matey mizzenmast topgallant fire ship tender black jack barque splice the main brace square-rigged. Tackle dance the hempen jig Chain Shot bilge boatswain Yellow Jack league boom aye. Grog sheet code of conduct brig boom scuppers marooned scurvy run a shot across the bow. Swing the lead no prey, no pay blow the man down reef bilged on her anchor bowsprit chase guns spirits lad. Pillage me Jack Ketch bounty schooner Pieces of Eight ballast execution dock poop deck. Scourge of the seven seas spanker run a shot across the bow boatswain Yellow Jack knave case shot measured fer yer chains six pounders. Gangway topgallant keelhaul haul wind barque cog galleon lookout Chain Shot. Execution dock Yellow Jack hang the jib lass Cat o'nine tails keelhaul list galleon long clothes. Swab provost chase guns lookout coxswain Arr spike Plate Fleet cackle fruit. Gunwalls ahoy chase tender tack bilge rat salmagundi lugger skysail. Avast ye quarter gaff lass holystone overhaul topmast skysail. Privateer gabion barque bilge rigging pillage Arr bowsprit heave down.\",\n  \"description\": \"Ye black spot cog Spanish Main black jack gabion smartly bilge water list. Execution dock yawl clap of thunder yo-ho-ho case shot poop deck loot hail-shot overhaul. Quarter no prey, no pay bowsprit piracy bucko driver crimp mizzenmast fire in the hole. Stern swing the lead smartly hogshead port jack bilge parley lugger.  Nipper brig tackle Brethren of the Coast crimp rigging lanyard cutlass fluke. Blow the man down lass rutters Sea Legs warp gun splice the main brace ho black spot. Long clothes main sheet Davy Jones' Locker yawl ballast dead men tell no tales run a rig gally bucko. Heave down piracy topgallant snow stern chantey barkadeer weigh anchor mizzenmast.Matey mizzenmast topgallant fire ship tender black jack barque splice the main brace square-rigged. Tackle dance the hempen jig Chain Shot bilge boatswain Yellow Jack league boom aye. Grog sheet code of conduct brig boom scuppers marooned scurvy run a shot across the bow. Swing the lead no prey, no pay blow the man down reef bilged on her anchor bowsprit chase guns spirits lad. Pillage me Jack Ketch bounty schooner Pieces of Eight ballast execution dock poop deck. Scourge of the seven seas spanker run a shot across the bow boatswain Yellow Jack knave case shot measured fer yer chains six pounders. Gangway topgallant keelhaul haul wind barque cog galleon lookout Chain Shot. Execution dock Yellow Jack hang the jib lass Cat o'nine tails keelhaul list galleon long clothes. Swab provost chase guns lookout coxswain Arr spike Plate Fleet cackle fruit. Gunwalls ahoy chase tender tack bilge rat salmagundi lugger skysail. Avast ye quarter gaff lass holystone overhaul topmast skysail. Privateer gabion barque bilge rigging pillage Arr bowsprit heave down.\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/2902b665-1190-4c70-9915-b9c2d7680450/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"2902b665-1190-4c70-9915-b9c2d7680450",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Updated title\",\n  \"description\": \"Updated description\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"5b1c2b4d-48c7-402a-80c3-cc796ad49c6b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author (with ids)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Updated title - Test with both ids\",\n  \"description\": \"Updated description - Test with both ids\",\n  \"id\": \"e57b605f-8b3c-4089-b672-6ce9e6d6c23f\",\n  \"authorId\": \"f74d6899-9ed2-4137-9876-66b070553f8f\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"5b1c2b4d-48c7-402a-80c3-cc796ad49c6b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author (no description)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Updated title\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"5b1c2b4d-48c7-402a-80c3-cc796ad49c6b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author (unexisting author)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Updated title\",\n  \"description\": \"Updated description\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/b94975d9-b640-40d4-ac11-9eb2ed1c66dc/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"b94975d9-b640-40d4-ac11-9eb2ed1c66dc",
+						"courses",
+						"5b1c2b4d-48c7-402a-80c3-cc796ad49c6b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author (unexisting course)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\" : \"Drinking Games for Lazy Pirates\",\n\t\"description\" : \"The best drinking games for pirates that don't like to move their feet unless strictly necessary.\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/ea6d127c-de97-4ee5-b259-220dc314896c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"ea6d127c-de97-4ee5-b259-220dc314896c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author (invalid values)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": null,\n  \"description\": \"Capstan gibbet poop deck smartly knave snow crow's nest tack Corsair doubloon. Dead men tell no tales Barbary Coast coxswain Arr gunwalls walk the plank tackle Gold Road yo-ho-ho lugger. Clipper lass sloop crack Jennys tea cup boatswain Pirate Round fire in the hole yard Gold Road weigh anchor. Draft measured fer yer chains boatswain fore lugsail heave down salmagundi pillage careen keel. Smartly warp run a rig grog dead men tell no tales lanyard loot bilge water coffer pink. Red ensign square-rigged ahoy gunwalls quarter knave doubloon handsomely shrouds reef sails. Belay brigantine galleon rigging nipper wherry lee parrel loaded to the gunwalls carouser. Jack Tar rope's end lee Corsair schooner barkadeer chantey rigging jack cable. No prey, no pay lee Chain Shot ye code of conduct tender Jack Tar topgallant piracy black jack. Hearties measured fer yer chains bowsprit port starboard Pieces of Eight Pirate Round pressgang black jack brig. Crimp salmagundi Brethren of the Coast poop deck coxswain quarterdeck black spot hogshead reef sails Yellow Jack. Brigantine piracy league Privateer run a shot across the bow rum lass Pirate Round Davy Jones' Locker ho. Arr yardarm walk the plank long boat hardtack gangplank bring a spring upon her cable scallywag port mizzen. Ahoy lateen sail Corsair gangplank careen warp rigging chase nipper gaff. Scallywag rutters plunder hail-shot fluke draught yo-ho-ho long clothes maroon reef sails.Capstan gibbet poop deck smartly knave snow crow's nest tack Corsair doubloon. Dead men tell no tales Barbary Coast coxswain Arr gunwalls walk the plank tackle Gold Road yo-ho-ho lugger. Clipper lass sloop crack Jennys tea cup boatswain Pirate Round fire in the hole yard Gold Road weigh anchor. Draft measured fer yer chains boatswain fore lugsail heave down salmagundi pillage careen keel. Smartly warp run a rig grog dead men tell no tales lanyard loot bilge water coffer pink. Red ensign square-rigged ahoy gunwalls quarter knave doubloon handsomely shrouds reef sails. Belay brigantine galleon rigging nipper wherry lee parrel loaded to the gunwalls carouser. Jack Tar rope's end lee Corsair schooner barkadeer chantey rigging jack cable. No prey, no pay lee Chain Shot ye code of conduct tender Jack Tar topgallant piracy black jack. Hearties measured fer yer chains bowsprit port starboard Pieces of Eight Pirate Round pressgang black jack brig. Crimp salmagundi Brethren of the Coast poop deck coxswain quarterdeck black spot hogshead reef sails Yellow Jack. Brigantine piracy league Privateer run a shot across the bow rum lass Pirate Round Davy Jones' Locker ho. Arr yardarm walk the plank long boat hardtack gangplank bring a spring upon her cable scallywag port mizzen. Ahoy lateen sail Corsair gangplank careen warp rigging chase nipper gaff. Scallywag rutters plunder hail-shot fluke draught yo-ho-ho long clothes maroon reef sails.Capstan gibbet poop deck smartly knave snow crow's nest tack Corsair doubloon. Dead men tell no tales Barbary Coast coxswain Arr gunwalls walk the plank tackle Gold Road yo-ho-ho lugger. Clipper lass sloop crack Jennys tea cup boatswain Pirate Round fire in the hole yard Gold Road weigh anchor. Draft measured fer yer chains boatswain fore lugsail heave down salmagundi pillage careen keel. Smartly warp run a rig grog dead men tell no tales lanyard loot bilge water coffer pink. Red ensign square-rigged ahoy gunwalls quarter knave doubloon handsomely shrouds reef sails. Belay brigantine galleon rigging nipper wherry lee parrel loaded to the gunwalls carouser. Jack Tar rope's end lee Corsair schooner barkadeer chantey rigging jack cable. No prey, no pay lee Chain Shot ye code of conduct tender Jack Tar topgallant piracy black jack. Hearties measured fer yer chains bowsprit port starboard Pieces of Eight Pirate Round pressgang black jack brig. Crimp salmagundi Brethren of the Coast poop deck coxswain quarterdeck black spot hogshead reef sails Yellow Jack. Brigantine piracy league Privateer run a shot across the bow rum lass Pirate Round Davy Jones' Locker ho. Arr yardarm walk the plank long boat hardtack gangplank bring a spring upon her cable scallywag port mizzen. Ahoy lateen sail Corsair gangplank careen warp rigging chase nipper gaff. Scallywag rutters plunder hail-shot fluke draught yo-ho-ho long clothes maroon reef sails.\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"5b1c2b4d-48c7-402a-80c3-cc796ad49c6b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author (null description)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Updated title\",\n  \"description\": null\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"5b1c2b4d-48c7-402a-80c3-cc796ad49c6b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Course for Author (null title == null description)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\" : null,\n  \"description\" : null\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35/courses/5b1c2b4d-48c7-402a-80c3-cc796ad49c6b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+						"courses",
+						"5b1c2b4d-48c7-402a-80c3-cc796ad49c6b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Photo for Member",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"replace\",\n      \"path\": \"/title\",\n      \"value\": \"Updated title\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Phto for Member (multiple)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"replace\",\n      \"path\": \"/title\",\n      \"value\": \"Another updated title\"\n    },\n    {\n      \"op\": \"replace\",\n      \"path\": \"/description\",\n      \"value\": \"Updated description\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Photo for Member (remove)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"remove\",\n      \"path\": \"/description\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Photo for Member (copy and add)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"add\",\n      \"path\": \"/description\",\n      \"value\": \"New description\"\n    },\n    {\n      \"op\": \"copy\",\n      \"from\": \"/description\",\n      \"path\": \"/title\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Photo for Member (unexisting author)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"replace\",\n      \"path\": \"/title\",\n      \"value\": \"Updated title\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/3121/photos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"3121",
+						"photos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Photo for Member (unexisting photo)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"replace\",\n      \"path\": \"/title\",\n      \"value\": \"Updated title\"\n    },\n    {\n      \"op\": \"replace\",\n      \"path\": \"/description\",\n      \"value\": \"Updated description\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos/1112",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos",
+						"1112"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Photo for Member (remove description)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"remove\",\n      \"path\": \"/description\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Photo for Member (remove unexisting property)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"remove\",\n      \"path\": \"/thisdoesnotexist\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Photo for Member (UPSERT - no title)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n      \"op\": \"replace\",\n      \"path\": \"/description\",\n      \"value\": \"Updated description\"\n    },\n    {\n      \"op\": \"replace\",\n      \"path\": \"/imagePath\",\n      \"value\": \"PAAAAATH\"\n    },\n    {\n      \"op\": \"replace\",\n      \"path\": \"/title\",\n      \"value\": \"TIIIITLE\"\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos/3212",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos",
+						"3212"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Photo for Member",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Photo for Member (unexisting Photo)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1232/photos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1232",
+						"photos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Photo for Member (unexisting Photo)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/members/1/photos/112312",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"members",
+						"1",
+						"photos",
+						"112312"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Author",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:51001/api/authors/d28888e9-2ba9-473a-a40f-e38cb54f9b35",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51001",
+					"path": [
+						"api",
+						"authors",
+						"d28888e9-2ba9-473a-a40f-e38cb54f9b35"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
